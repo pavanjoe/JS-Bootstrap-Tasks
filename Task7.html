@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task7</title>
+</head>
+<body>
+    <h1>Number Reversal</h1>
+    <label for="inputNumber">Enter a number:</label>
+    <input type="text" id="input" placeholder="Enter number here">
+    <button onclick="reverseNum()">Reverse</button>
+    <p>Reversed String: <span id="output"></span></p>
+
+    <script>
+        document.getElementById("input").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                reverseNum();
+            }
+        });
+        function reverseNum() {
+            var num = document.getElementById("input").value;
+
+            if (num === "") {
+                alert("Please enter a number");
+                return;
+            }
+            var a=0;
+            while(num>0) {
+                a=a*10+num%10;
+                num=Math.floor(num/10);
+            }
+            document.getElementById("output").textContent = a;
+        }
+    </script>
+</body>
+</html>

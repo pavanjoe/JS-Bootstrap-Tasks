@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task13</title>
+    <style>
+        #i1 {
+            position: relative;
+            animation-name: anime1;
+            animation-iteration-count: infinite;
+            animation-duration: 10s;
+            left: 0%;
+            animation-play-state: paused; 
+        }
+
+        button {
+            font-size: large;
+            padding: 10px;
+        }
+        @keyframes anime1 {
+            from {
+                left: 0%;
+            }
+            to {
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p id="i1"><img src="./train.png" alt=""></p>
+    <center>
+        <h1 style="color: darkblue;">Click the following buttons to handle the animation</h1>
+        <button onclick="startAnimation()">Start</button>
+        <button onclick="stopAnimation()">Stop</button>
+    </center>
+    <script>
+        const element = document.getElementById("i1")
+        function startAnimation() {
+            element.style.animationPlayState= "running";
+        }
+        function stopAnimation() {
+            element.style.animationPlayState= "paused";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task9</title>
+</head>
+<body>
+    <h1>Multiplication and Division</h1>
+    <label for="">1st Number:</label>
+    <input type="text" name="" id="firstNum" />
+    <br /><br />
+    <label for="">2nd Number:</label>
+    <input type="text" name="" id="secondNum" />
+    <br><br>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+    <p>The Result Is:</p>
+    <span id="output"></span>
+    <script>
+        function multiply() {
+            var a = document.getElementById("firstNum").value;
+            var b = document.getElementById("secondNum").value;
+            document.getElementById("output").textContent = a*b;
+        }
+        function divide() {
+            var a = document.getElementById("firstNum").value;
+            var b = document.getElementById("secondNum").value;
+            document.getElementById("output").textContent = a/b;
+        }
+    </script>
+</body>
+</html>

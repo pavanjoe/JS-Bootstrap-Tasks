@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task14</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+        .container{
+            background-color: rgb(164, 165, 255);
+            box-shadow: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 60%;
+            height: 100vh;
+        }
+        td{
+            padding: 3px;
+        }
+        span {
+            margin-left: 15px;
+            color: red;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="tel"]
+        {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container shadow-lg">
+        <h2 id="head" style="color: blue; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Registration form</h2>
+        <br>
+        <table>
+            <tr>
+                <th class="labels"><label for="">First Name</label></th>
+                <td><input id="firstName" type="text" /></td>
+                <td><span id="outputFirstName"></span></td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Last Name</label></th>
+                <td><input id="lastName" type="text" /></td>
+                <td><span id="outputLastName"></span></td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Email</label></th>
+                <td><input id="email" type="email" /></td>
+                <td><span id="outputEmail"></span></td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Password</label></th>
+                <td><input id="password" type="password"></td>
+                <td><span id="outputPassword"></spa</td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Re-enter Password</label></th>
+                <td><input id="rePassword" type="password" /></td>
+                <td><span id="outputRePassword"></span></td>
+            </tr>
+            <tr>
+                <th class="labels" rowspan="2"><label for="">Gender:</label></th>
+                <td><input type="radio" name="gen" value="male">Male</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="gen" value="female">Female</td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Age:</label></th>
+                <td><input id="age" type="number" /></td>
+                <td><span id="outputAge"></span></td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Phone Number</label></th>
+                <td><input id="phoneNo" type="tel" /></td>
+                <td><span id="outputPhoneNo"></span></td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Address</label></th>
+                <td><textarea id="address" name="address" rows="5" cols="50" required></textarea></td>
+                <td><span id="outputAddress"></span></td>
+            </tr>
+            <tr>
+            <tr>
+                <th class="labels"><label for="">State</label></th>
+                <td><input id="state" type="text" /></td>
+                <td><span id="outputState"></span></td>
+            </tr>
+            <tr>
+                <th class="labels"><label for="">Country</label></th>
+                <td>
+                    <select id="country" name="country">
+                        <option value="" disabled selected>Choose your country  </option>
+                        <option value="usa">United States</option>
+                        <option value="canada">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="australia">Australia</option>
+                        <option value="france">France</option>
+                        <option value="germany">Germany</option>
+                        <option value="japan">Japan</option>
+                        <option value="india">India</option>
+                        <option value="china">China</option>
+                        <option value="brazil">Brazil</option>
+                        <option value="mexico">Mexico</option>
+                        <option value="south-africa">South Africa</option>
+                        <option value="egypt">Egypt</option>
+                        <option value="italy">Italy</option>
+                        <option value="spain">Spain</option>
+                        <option value="argentina">Argentina</option>
+                        <option value="russia">Russia</option>
+                        <option value="south-korea">South Korea</option>
+                        <option value="thailand">Thailand</option>
+                        <option value="sweden">Sweden</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Languages known</th>
+                <td>
+                    <input type="checkbox" name="lang[]" /> English   
+                    <input type="checkbox" name="lang[]" /> Kannada
+                    <input type="checkbox" name="lang[]" /> Hindi
+                    <input type="checkbox" name="lang[]" /> Telugu
+                </td>
+            </tr>
+                <td colspan="2"><input type="checkbox" name="" />Hereby I declare all the given details are true</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">Log in to <a href="https://ethnus.com/">Ethnus</a> website</td>
+            </tr>
+        </table>
+        <button class="btn btn-danger rounded-pill border border-dark" onclick="check()">Register</button>
+        <script>
+            function check() {
+                clearErrors();
+                var firstName = document.getElementById("firstName").value;
+                var lastName = document.getElementById("lastName").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var rePassword = document.getElementById("rePassword").value;
+                var age = document.getElementById("age").value;
+                var phoneNo = document.getElementById("phoneNo").value;
+                var address = document.getElementById("address").value;
+                var state = document.getElementById("state").value;
+                if (firstName.length === 0) {
+                    change("outputFirstName");
+                }
+                if (lastName.length === 0) {
+                    change("outputLastName");
+                }
+                if (!isValidEmail(email)) {
+                    change("outputEmail");
+                }
+                if (!isStrongPassword(password)) {
+                    change("outputPassword");
+                }
+                if ((password != rePassword) || (!isStrongPassword(password))) {
+                    document.getElementById("outputRePassword").textContent = "POOR OR MISMATCH";
+                }
+                if (age.length === 0) {
+                    change("outputAge");
+                }
+                if (phoneNo.length != 10) {
+                    change("outputPhoneNo");
+                }
+                if (address.length === 0) {
+                    change("outputAddress");
+                }
+                if (state.length === 0) {
+                    change("outputState");
+                }
+            }
+
+            function change(id) {
+                document.getElementById(id).textContent = "POOR"
+            }
+
+            function isValidEmail(email) {
+                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                return emailPattern.test(email);
+            }
+
+            function isStrongPassword(password) {
+                const minLength = 8; 
+                const hasUpperCase = /[A-Z]/.test(password);
+                const hasLowerCase = /[a-z]/.test(password);
+                const hasNumber = /[0-9]/.test(password);
+                const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password);
+                if (
+                    password.length >= minLength &&
+                    hasUpperCase &&
+                    hasLowerCase &&
+                    hasNumber &&
+                    hasSpecialChar
+                ) {
+                    return true; 
+                } else {
+                    return false; 
+                }
+            }
+
+            function clearErrors() {
+                document.getElementById("outputFirstName").textContent = "";
+                document.getElementById("outputLastName").textContent = "";
+                document.getElementById("outputEmail").textContent = "";
+                document.getElementById("outputPassword").textContent = "";
+                document.getElementById("outputRePassword").textContent = "";
+                document.getElementById("outputAge").textContent = "";
+                document.getElementById("outputPhoneNo").textContent = "";
+                document.getElementById("outputAddress").textContent = "";
+                document.getElementById("outputState").textContent = "";
+            }
+        </script>
+</body>
+</html>
